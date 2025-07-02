@@ -40,14 +40,8 @@ app.get('/log-out',(req,res,next)=>{
     res.redirect("/");
   });
 })
-app.post('/sign-up', async (req,res,next)=>{
-    try{
-        await pool.query(`INSERT INTO users (username,password) VALUES ($1,$2)`,[req.body.username,req.body.password,]);
-        res.redirect('/')
-    }
-    catch(error){
-        return next(error)
-    }
+app.get('/sign-up',(req,res,next)=>{
+    res.render('sign-up-form');
 })
 
 passport.use(
